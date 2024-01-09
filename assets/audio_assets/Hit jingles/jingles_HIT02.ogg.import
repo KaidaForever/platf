@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dkksltt025q3v"
+path="res://.godot/imported/jingles_HIT02.ogg-c94a48ac27290feda28c9a0f45ddb642.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio_assets/Hit jingles/jingles_HIT02.ogg"
+dest_files=["res://.godot/imported/jingles_HIT02.ogg-c94a48ac27290feda28c9a0f45ddb642.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
