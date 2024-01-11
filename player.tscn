@@ -1,15 +1,274 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfcp8fmqhqdvx"]
+[gd_scene load_steps=19 format=3 uid="uid://bfcp8fmqhqdvx"]
 
 [ext_resource type="Texture2D" uid="uid://ksv6ix4c4j1q" path="res://assets/char_assets/Player Idle/Player Idle 48x48.png" id="1_gsabh"]
 [ext_resource type="Script" path="res://movement.gd" id="1_ytnpw"]
+[ext_resource type="Texture2D" uid="uid://0wn3syuoagxr" path="res://assets/background/sky.png" id="3_cjiqi"]
+[ext_resource type="Texture2D" uid="uid://57xcwh3ofr7s" path="res://assets/background/far-clouds.png" id="4_wblqm"]
+[ext_resource type="Texture2D" uid="uid://dst8klhgqvq4q" path="res://assets/background/near-clouds.png" id="5_y754e"]
+[ext_resource type="Texture2D" uid="uid://42cn3uifvts4" path="res://assets/background/far-mountains.png" id="6_qw7i1"]
+[ext_resource type="Texture2D" uid="uid://xh66tdcpuwjo" path="res://assets/background/mountains.png" id="7_8erwo"]
+[ext_resource type="Texture2D" uid="uid://2gmno7s55p78" path="res://assets/background/trees.png" id="8_q8iu0"]
+[ext_resource type="Texture2D" uid="uid://bnjderxutc0qk" path="res://assets/char_assets/Player Run/player run 48x48.png" id="9_q4052"]
+[ext_resource type="Texture2D" uid="uid://dpftc70c8vla0" path="res://assets/char_assets/Player Jump/player jump 48x48.png" id="10_emana"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6yeky"]
+
+[sub_resource type="Animation" id="Animation_p8433"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_gsabh")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_b6qhb"]
+resource_name = "run"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_q4052")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_e64lp"]
+resource_name = "jump"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_emana")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2wv36"]
+resource_name = "levitate"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_emana")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_c3e2h"]
+resource_name = "fall"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_emana")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_8x1fc"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_gsabh")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ck5hs"]
+_data = {
+"RESET": SubResource("Animation_p8433"),
+"fall": SubResource("Animation_c3e2h"),
+"idle": SubResource("Animation_8x1fc"),
+"jump": SubResource("Animation_e64lp"),
+"levitate": SubResource("Animation_2wv36"),
+"run": SubResource("Animation_b6qhb")
+}
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_ytnpw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(1, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("1_gsabh")
 hframes = 10
@@ -20,4 +279,137 @@ scale = Vector2(1.5, 3)
 shape = SubResource("RectangleShape2D_6yeky")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/sky"]
+z_index = -10
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("3_cjiqi")
+centered = false
+
+[node name="farclouds" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.01, 0.01)
+motion_mirroring = Vector2(1536, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/farclouds"]
+z_index = -9
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("4_wblqm")
+centered = false
+
+[node name="farclouds1" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(512, 0)
+motion_scale = Vector2(0.01, 0.01)
+motion_mirroring = Vector2(1536, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/farclouds1"]
+z_index = -9
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("4_wblqm")
+centered = false
+
+[node name="farclouds2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(1024, 0)
+motion_scale = Vector2(0.01, 0.01)
+motion_mirroring = Vector2(1536, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/farclouds2"]
+z_index = -9
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("4_wblqm")
+centered = false
+
+[node name="clouds" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.02, 0.02)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/clouds"]
+z_index = -8
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("5_y754e")
+centered = false
+
+[node name="clouds1" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(576, 0)
+motion_scale = Vector2(0.02, 0.02)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/clouds1"]
+z_index = -8
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("5_y754e")
+centered = false
+
+[node name="farmountains" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.03, 0.03)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/farmountains"]
+z_index = -7
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("6_qw7i1")
+centered = false
+
+[node name="farmountains1" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(640, 0)
+motion_scale = Vector2(0.03, 0.03)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/farmountains1"]
+z_index = -7
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("6_qw7i1")
+centered = false
+
+[node name="mountains" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.04, 0.04)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/mountains"]
+z_index = -6
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("7_8erwo")
+centered = false
+
+[node name="forest" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/forest"]
+z_index = -5
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("8_q8iu0")
+centered = false
+
+[node name="forest1" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(960, 0)
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/forest1"]
+z_index = -5
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("8_q8iu0")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ck5hs")
+}
+autoplay = "idle"
